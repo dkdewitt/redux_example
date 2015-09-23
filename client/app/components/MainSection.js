@@ -12,18 +12,26 @@ const GROUP_FILTERS = {
 class MainSection extends Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { filter: SHOW_ALL };
+    this.state = { filter: SHOW_ALL ,
+      text: ''};
+    //this.handleAdd = this.handleAdd.bind(this);
   }
 
-  handleClearCompleted() {
-
+  handleChange() {
+    this.setState({text: event.target.value});
+    //console.log(this.state);
   }
 
   handleShow(filter) {
     this.setState({ filter });
   }
 
+  handleAdd(event){
+    this.props.addGroup("Hello");
+    //alert(this.state.text);
 
+
+  }
 
   render() {
     //const { todos, actions } = this.props;
@@ -34,12 +42,14 @@ class MainSection extends Component {
     //  todo.completed ? count + 1 : count,
     //  0
     //);
-  console.log(this.props);
+  //console.log(this.props);
     return (
       <div className="main">
         {this.props.groups}
         <br />
-        <a onClick={function(){alert();}}>Test</a>
+
+        <input type="text" onChange={()=>this.handleChange(event)}name="group" />
+        <a onClick={()=>this.handleAdd(event)}>Test</a>
       </div>
     );
   }

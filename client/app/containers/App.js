@@ -9,11 +9,11 @@ class App extends Component {
   render() {
     const { groups, dispatch } = this.props;
     const actions = bindActionCreators(TodoActions, dispatch);
-
+    console.log(this.state);
     return (
       <div>
       
-        <MainSection groups={groups} actions={actions} />
+        <MainSection groups={groups} addGroup=  {group =>dispatch(TodoActions.addGroup(group))} actions={actions}  />
       </div>
     );
   }

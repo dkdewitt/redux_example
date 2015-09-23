@@ -1,19 +1,33 @@
 import { ADD_GROUP, DELETE_GROUP, EDIT_GROUP } from '../constants/ActionTypes';
 
 const initialState = [{
-    groups: 'Admin Group',
-    is_active: false,
-    id: 0
+   
+      
+        name: 'Admin Group',
+        is_active: false,
+        id: 0
+   
+},{
+   
+      
+        name: 'Admin Group',
+        is_active: false,
+        id: 3
+   
 }];
 
 export default function groups(state=initialState, action){
   switch (action.type) {
     case ADD_GROUP:
-      return[{
-        id: state.reduce((maxId, group) => Math.max(group.id, maxId)-1)+1,
-          cimpleted: false,
-          text: action.text,
-        }, ...state];
+      
+      //console.log( state.reduce((maxId, group)=> Math.max(group.id, maxId.id)-1)+1);
+      
+      return[ ...state,{
+        //id: state.reduce((maxId, group)=> Math.max(group.id, maxId.id)-1)+1,
+        //  id: 1,
+          is_active: true,
+          name: action.group,
+        }];
 
     case DELETE_GROUP:
       return state.filter(group =>
