@@ -5,11 +5,14 @@ import ReactDOM from 'react-dom';
 import { default as Router, Link, Route, RouteHandler, Redirect } from 'react-router';
 import { Provider, connect } from 'react-redux';
 import { createStore, compose, combineReducers } from 'redux';
-
 import configureStore from './store/configureStore';
 import { reduxReactRouter, routerStateReducer, ReduxRouter } from 'redux-router';
 const store = configureStore();
 import {Test1, test, GroupRouter} from './components';
+import {Sidebar} from './components/layout';
+
+require("scss/app.scss");
+
 
 
 
@@ -33,11 +36,13 @@ class App extends Component {
     );
 
     return (
-      <div>
+<div>
+<div className='wrapper'>
+  <Sidebar />
         <h1>App Container</h1>
         {links}
         {this.props.children}
-      </div>
+      </div></div>
     );
   }
 }
@@ -71,8 +76,8 @@ class Child extends Component {
 const routes = (
             <Route path="/" component={App}>
               <Route path="/parent" component={Parent}>
-                <Route path="child" component={Child} />
-                <Route path="child/:id" component={Test1} />
+                <Route path="/child" component={Child} />
+                <Route path="/child/:id" component={Test1} />
                 
               </Route>
             <Route path="/groups" component={Test1} />

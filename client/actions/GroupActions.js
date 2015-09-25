@@ -108,7 +108,7 @@ const GroupActions = {
       .then(check)
       .then(parse)
       .then(groups => dispatch({
-        console.log(groups);
+        
         type: Actions.FETCH_ALL_GROUPS,
         payload: { groups }
       }))

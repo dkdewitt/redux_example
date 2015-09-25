@@ -9,6 +9,7 @@ export default class GroupRouter extends Component {
     return (
         <Route>
         <Route path="/groups" component={Test1} />
+        <Route path="/groups2" component={Test1} />
         </Route>
     );
   }

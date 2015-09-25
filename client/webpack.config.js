@@ -2,6 +2,13 @@
 
 var path = require('path');
 var webpack = require('webpack');
+var commonsPlugin =
+  new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js');
+
+var definePlugin = new webpack.DefinePlugin({
+  __DEV__: true,
+  __APIURL__: "'http://127.0.0.1:6543/'",
+});
 
 module.exports = {
   context: __dirname,
@@ -15,9 +22,8 @@ module.exports = {
   },
 
   output: {
-    path: path.join(__dirname, 'assets', 'js'),
-    filename: 'bundle.js',
-    publicPath: '/assets/'
+    path: './build',
+    filename: '[name].js'
   },
 
   module: {
@@ -31,15 +37,25 @@ module.exports = {
           optional: ['runtime'],
           stage: 0
         }
-      }
+      },
+      { test: /\.scss$/, loader: "style!css!sass?outputStyle=expanded&" +
+          "includePaths[]=" +
+            encodeURIComponent(path.resolve(__dirname, "./scss")) + "&" +
+          "includePaths[]=" +
+            encodeURIComponent(path.resolve(__dirname, "./another-folder"))
+      },
+
     ]
   },
-
   resolve: {
-    extensions: ['', '.js', '.jsx'],
-    modulesDirectories: ['node_modules']
+    modulesDirectories: ['./bower_components', 'node_modules'],
+    root: path.resolve(__dirname, './')
   },
-
+  plugins: [
+    commonsPlugin,
+    definePlugin,
+    new webpack.NoErrorsPlugin()
+  ],
   debug: true,
 
   devtool: 'eval',
