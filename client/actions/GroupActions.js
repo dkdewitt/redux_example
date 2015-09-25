@@ -101,24 +101,9 @@ const GroupActions = {
   },
 
   fetchAllGroups() {console.log(`${SERVER_URL}/groups`);
-    return dispatch => {
-      return fetch(`${SERVER_URL}/groups`, {
-        method: 'GET'
-      })
-      .then((res)=>{console.log(res)})
-      .then(check)
-      .then(parse)
-      .then(groups => dispatch({
-        
-        type: Actions.FETCH_ALL_GROUPS,
-        payload: { groups }
-      }))
-      .catch(err => dispatch({
-        type: Actions.FETCH_ALL_GROUPS,
-        payload: err,
-        error: true
-      }));
-    };
+    
+    return {groups2: [{id: 1, title: "test"}]}  ;
+    
   },
 
 }

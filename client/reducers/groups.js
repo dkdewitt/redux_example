@@ -42,12 +42,12 @@ const ACTIONS_MAP = {
   }
 };
 
-const initialState = Map({
-  groupList: List()
-});
+const initialState = {groupList: {}};
 
-export function groups(state = initialState, action={}) {
+export function groups(state = initialState, action) {
+  //console.log(action);
   const {type, payload} = action;
+  //console.log(action);
   const reducer = ACTIONS_MAP[camelCase(type)];
   /**
    * If the action corresponds to a handler in ACTIONS_MAP, return a reduction

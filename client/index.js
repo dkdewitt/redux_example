@@ -13,13 +13,36 @@ import {Sidebar} from './components/layout';
 
 require("scss/app.scss");
 
+import { bindActionCreators } from 'redux';
+//import { connect } from 'react-redux';
 
 
 
-@connect(state => ({ routerState: state.router }))
+function mapStateToProps(state) {
+  return {
+    routerState: state.router
+  };
+}
+
+
+
+
+//@connect(state => ({ routerState: state.router }))
 class App extends Component {
   static propTypes = {
     children: PropTypes.node
+  }
+  constructor(props) {
+    super(props);
+    //this.handleChange = this.handleChange.bind(this);
+    //this.handleRefreshClick = this.handleRefreshClick.bind(this);
+  }
+
+
+ componentDidMount() {
+    console.log(this.props);
+    //const { dispatch, selectedReddit } = this.props;
+    //dispatch(fetchPostsIfNeeded(selectedReddit));
   }
 
   render() {
@@ -46,6 +69,8 @@ class App extends Component {
     );
   }
 }
+
+connect(mapStateToProps)(App);
 
 class Parent extends Component {
   static propTypes = {
@@ -86,12 +111,13 @@ const routes = (
             );
 
 
+
 class Root extends Component {
   render() {console.log(this);
     return (
       <div>
         <Provider store={store}>
-          <ReduxRouter>
+          <ReduxRouter store={store}>
             {routes}
           </ReduxRouter>
         </Provider>

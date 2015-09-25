@@ -7,22 +7,32 @@ import { connect } from 'react-redux';
 
 
 
-export default class Test1 extends Component {
+function mapStateToProps(state) {
+  return {
+    counter: state
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(GroupActions, dispatch);
+}
+
+
+//@connect( mapDispatchToProps)
+class Test1 extends Component {
   
-  static propTypes = {
-    actions: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    groups: PropTypes.instanceOf(List).isRequired
-  }
 
    constructor(props) {
     super(props);    
     this.state = {groups: null};
+    let { dispatch } = this.props;
+    console.log(this);
   }
 
   componentWillMount() {
-    this.setState({groups: this.props.actions.fetchAllGroups()}, ()=>
-      console.log(this));
+    console.log(this.props.fetchAllGroups());
+    //this.setState({groups: this.props.fetchAllGroups()}, ()=>
+    //  console.log(this));
   }
 
 
@@ -35,3 +45,5 @@ export default class Test1 extends Component {
     );
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Test1);

@@ -7,7 +7,7 @@ var commonsPlugin =
 
 var definePlugin = new webpack.DefinePlugin({
   __DEV__: true,
-  __APIURL__: "'http://127.0.0.1:6543/'",
+  __APIURL__: "'http://192.168.2.7:6543/'",
 });
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
 
   entry: {
     app: [
-    'webpack-dev-server/client?http://127.0.0.1:8080',
+    'webpack-dev-server/client?http://192.168.2.7:8080',
       'webpack-hot-middleware/client',
       './index'
     ]
