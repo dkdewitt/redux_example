@@ -100,11 +100,12 @@ const GroupActions = {
     };
   },
 
-  fetchAllGroups() {console.log("hello");
+  fetchAllGroups() {console.log(`${SERVER_URL}/groups`);
     return dispatch => {
       return fetch(`${SERVER_URL}/groups`, {
         method: 'GET'
       })
+      .then((res)=>{console.log(res)})
       .then(check)
       .then(parse)
       .then(groups => dispatch({

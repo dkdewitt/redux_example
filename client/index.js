@@ -87,7 +87,7 @@ const routes = (
 
 
 class Root extends Component {
-  render() {console.log(routes);
+  render() {console.log(this);
     return (
       <div>
         <Provider store={store}>
