@@ -1,13 +1,14 @@
 import {combineReducers} from 'redux';
 import { reduxReactRouter, routerStateReducer, ReduxRouter } from 'redux-router';
 import { groups } from './groups';
+import counter from './counter';
 
-console.log("I was called");
 
 
 const rootReducer = combineReducers({
     router: routerStateReducer,
-   groups
+   groups,
+   counter
 });
 
 export default rootReducer;

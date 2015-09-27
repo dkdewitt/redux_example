@@ -15,7 +15,7 @@ module.exports = {
 
   entry: {
     app: [
-    'webpack-dev-server/client?http://192.168.2.7:8080',
+    'webpack-dev-server/client?http://127.0.0.1:8080',
       'webpack-hot-middleware/client',
       './index'
     ]

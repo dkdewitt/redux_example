@@ -5,4 +5,5 @@ export default constantMirror(
   'DELETE_GROUP',
   'EDIT_GROUP',
   'FETCH_ALL_GROUPS',
+  'TEST',
 );

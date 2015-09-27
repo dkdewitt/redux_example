@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "coverage": "istanbul cover node_modules/.bin/_mocha -- --recursive --compilers=js:babel-core/register",
-    "lint": "eslint --ext=.js,.jsx js/ test/",
+    "lint": "eslint --ext=.js,.jsx ./ test/",
     "dev": "NODE_ENV=DEV NODE_PATH=./app/ webpack-dev-server --history-api-fallback --output-public-path / --host 0.0.0.0 --devtool eval --progress --colors --content-base build/ --hot",
     "test": "mocha --recursive --watch --compilers=js:babel-core/register"
   },

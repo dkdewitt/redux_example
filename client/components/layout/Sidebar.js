@@ -1,5 +1,6 @@
 import  React, {Component} from 'react';
 import { default as Router, Link, Route, RouteHandler, Redirect } from 'react-router';
+
 export default class Sidebar extends Component {
   render() {
 
@@ -17,6 +18,9 @@ export default class Sidebar extends Component {
       <li>
         <Link to={'/groups'}>{"Groups"}</Link>
       </li>
+      <li>
+        <Link to={'/counter'}>{"Counter"}</Link>
+      </li>      
       <li>
         <a className='active'>Milestones</a>
       </li>

@@ -9,7 +9,7 @@ const SERVER_URL = '127.0.0.1:5000/api';
  */
 function check(response) {
   const { status, statusText } = response;
-
+  console.log(statusText);
   if (status >= 200 && status < 300) return response;
 
   const error = new Error(statusText);
@@ -100,10 +100,40 @@ const GroupActions = {
     };
   },
 
-  fetchAllGroups() {console.log(`${SERVER_URL}/groups`);
+  fetchAllGroups() {
     
-    return {groups2: [{id: 1, title: "test"}]}  ;
-    
+    return dispatch => {
+      return fetch('http://127.0.0.1:5000/api/groups/')
+      .then(check)
+      .then(parse)
+      .then(response => {
+          console.log(response);
+          const groups = response.groups;
+          dispatch({
+        type: Actions.FETCH_ALL_GROUPS,
+        payload: {
+          groups
+        }
+      })
+      })
+      .catch(err => {
+        dispatch({
+        type: Actions.FETCH_ALL_GROUPS,
+        payload: err,
+        error: true
+      }
+    );
+    });
+  };
+},
+
+  test() {console.log(`${SERVER_URL}/groups`);
+    return dispatch => {
+    return (dispatch({
+      type: Actions.TEST,
+        payload: { groups: {id: 1, name: "test"} },
+      }) ) ;
+    }
   },
 
 }
